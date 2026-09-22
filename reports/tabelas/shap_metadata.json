@@ -1,0 +1,10 @@
+{
+  "modelo": "Random Forest | SMOTENC",
+  "unidade": "Score de probabilidade não calibrada",
+  "n_background": 50,
+  "n_explicados": 80,
+  "max_erro_aditividade": 7.771561172376096e-16,
+  "row_id_local": 2127,
+  "base_local": 0.15366595238095238,
+  "score_local": 1.0
+}

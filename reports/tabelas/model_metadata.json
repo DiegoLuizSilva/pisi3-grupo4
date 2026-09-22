@@ -1,0 +1,33 @@
+{
+  "vencedor": "Random Forest | SMOTENC",
+  "criterio": "F1 de churn médio em CV agrupada de 5 folds",
+  "cv_f1": 0.8686698476415,
+  "sha256": "72a4a660cba4166bab4f0c24e930d5453d1917e208c9ce2ed16b841347350dd3",
+  "n_treino": 2517,
+  "n_teste": 633,
+  "seed_holdout": 42,
+  "seed_cv": 43,
+  "features": [
+    "call_failure",
+    "complains",
+    "subscription_length",
+    "charge_amount",
+    "seconds_of_use",
+    "frequency_of_use",
+    "frequency_of_sms",
+    "distinct_called_numbers",
+    "tariff_plan",
+    "status",
+    "age",
+    "customer_value"
+  ],
+  "parametros": "{'model__max_depth': None, 'model__min_samples_leaf': 1, 'prep': ColumnTransformer(transformers=[('numeric', StandardScaler(),\n                                 ['call_failure', 'subscription_length',\n                                  'charge_amount', 'seconds_of_use',\n                                  'frequency_of_use', 'frequency_of_sms',\n                                  'distinct_called_numbers', 'age',\n                                  'customer_value']),\n                                ('binary', 'passthrough',\n                                 ['complains', 'tariff_plan', 'status'])],\n                  verbose_feature_names_out=False)}",
+  "python": "3.12.14",
+  "versoes": {
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scikit-learn": "1.8.0",
+    "imbalanced-learn": "0.14.2",
+    "shap": "0.52.0"
+  }
+}
