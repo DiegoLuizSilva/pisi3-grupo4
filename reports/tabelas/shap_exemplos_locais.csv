@@ -1,0 +1,10 @@
+faixa,row_id,classe_real,score_churn,posto,atributo,valor_shap,impacto
+baixo,591,0,0.12944444444444442,1,status,0.17111661111111112,aumenta
+baixo,591,0,0.12944444444444442,2,subscription_length,-0.11481807738095244,reduz
+baixo,591,0,0.12944444444444442,3,distinct_called_numbers,-0.03552415674603173,reduz
+medio,2681,1,0.41,1,status,0.23410020238095247,aumenta
+medio,2681,1,0.41,2,age,0.06341900000000004,aumenta
+medio,2681,1,0.41,3,subscription_length,0.05109110912698415,aumenta
+alto,2631,1,0.81,1,status,0.26650740873015877,aumenta
+alto,2631,1,0.81,2,frequency_of_use,0.1387432222222223,aumenta
+alto,2631,1,0.81,3,subscription_length,0.06796927579365084,aumenta

@@ -1,0 +1,256 @@
+{
+  "modelo_sha256": "13d946fbcaa29a9027b33702a1ec41f244c22ec5c12b2004f8c81481382e4d7d",
+  "dataset_sha256": "72a4a660cba4166bab4f0c24e930d5453d1917e208c9ce2ed16b841347350dd3",
+  "vencedor": "Random Forest | SMOTENC",
+  "classe_churn": 1,
+  "holdout_conferido": 633,
+  "erro_maximo_scores": 1.1102230246251565e-16,
+  "casos": [
+    {
+      "row_id": 110,
+      "entrada_api": {
+        "call_failure": 3.0,
+        "complains": 0.0,
+        "subscription_length": 36.0,
+        "charge_amount": 0.0,
+        "seconds_of_use": 5858.0,
+        "frequency_of_use": 92.0,
+        "frequency_of_sms": 2.0,
+        "distinct_called_numbers": 10.0,
+        "age_group": 2.0,
+        "tariff_plan": 1.0,
+        "status": 1.0,
+        "age": 25.0,
+        "customer_value": 276.75
+      },
+      "classe_real": 0,
+      "probabilidade_churn": 0.095,
+      "faixa": "baixo",
+      "fatores": [
+        {
+          "campo": "status",
+          "impacto": "reduz",
+          "peso": 1.0,
+          "valor_shap": -0.12163628764075508
+        },
+        {
+          "campo": "call_failure",
+          "impacto": "reduz",
+          "peso": 0.7102,
+          "valor_shap": -0.08638524608013473
+        },
+        {
+          "campo": "complains",
+          "impacto": "reduz",
+          "peso": 0.6129,
+          "valor_shap": -0.07455368750393672
+        }
+      ]
+    },
+    {
+      "row_id": 516,
+      "entrada_api": {
+        "call_failure": 0.0,
+        "complains": 0.0,
+        "subscription_length": 37.0,
+        "charge_amount": 0.0,
+        "seconds_of_use": 275.0,
+        "frequency_of_use": 4.0,
+        "frequency_of_sms": 0.0,
+        "distinct_called_numbers": 1.0,
+        "age_group": 2.0,
+        "tariff_plan": 1.0,
+        "status": 2.0,
+        "age": 25.0,
+        "customer_value": 12.555
+      },
+      "classe_real": 0,
+      "probabilidade_churn": 0.2863003277710939,
+      "faixa": "baixo",
+      "fatores": [
+        {
+          "campo": "status",
+          "impacto": "aumenta",
+          "peso": 1.0,
+          "valor_shap": 0.11003826168758814
+        },
+        {
+          "campo": "age",
+          "impacto": "reduz",
+          "peso": 0.8274,
+          "valor_shap": -0.09104452097869345
+        },
+        {
+          "campo": "call_failure",
+          "impacto": "reduz",
+          "peso": 0.664,
+          "valor_shap": -0.07306542630666805
+        }
+      ]
+    },
+    {
+      "row_id": 399,
+      "entrada_api": {
+        "call_failure": 5.0,
+        "complains": 0.0,
+        "subscription_length": 12.0,
+        "charge_amount": 1.0,
+        "seconds_of_use": 1668.0,
+        "frequency_of_use": 27.0,
+        "frequency_of_sms": 11.0,
+        "distinct_called_numbers": 12.0,
+        "age_group": 3.0,
+        "tariff_plan": 1.0,
+        "status": 1.0,
+        "age": 30.0,
+        "customer_value": 111.8
+      },
+      "classe_real": 1,
+      "probabilidade_churn": 0.515,
+      "faixa": "medio",
+      "fatores": [
+        {
+          "campo": "subscription_length",
+          "impacto": "aumenta",
+          "peso": 1.0,
+          "valor_shap": 0.10633955098085904
+        },
+        {
+          "campo": "complains",
+          "impacto": "reduz",
+          "peso": 0.8437,
+          "valor_shap": -0.08971562670408174
+        },
+        {
+          "campo": "status",
+          "impacto": "reduz",
+          "peso": 0.7117,
+          "valor_shap": -0.07568052610828177
+        }
+      ]
+    },
+    {
+      "row_id": 1624,
+      "entrada_api": {
+        "call_failure": 8.0,
+        "complains": 1.0,
+        "subscription_length": 35.0,
+        "charge_amount": 1.0,
+        "seconds_of_use": 5628.0,
+        "frequency_of_use": 98.0,
+        "frequency_of_sms": 51.0,
+        "distinct_called_numbers": 26.0,
+        "age_group": 2.0,
+        "tariff_plan": 1.0,
+        "status": 1.0,
+        "age": 25.0,
+        "customer_value": 487.17
+      },
+      "classe_real": 1,
+      "probabilidade_churn": 0.65,
+      "faixa": "medio",
+      "fatores": [
+        {
+          "campo": "complains",
+          "impacto": "aumenta",
+          "peso": 1.0,
+          "valor_shap": 0.3148233220996618
+        },
+        {
+          "campo": "customer_value",
+          "impacto": "reduz",
+          "peso": 0.2918,
+          "valor_shap": -0.09185634129006927
+        },
+        {
+          "campo": "status",
+          "impacto": "reduz",
+          "peso": 0.2045,
+          "valor_shap": -0.06437901387351712
+        }
+      ]
+    },
+    {
+      "row_id": 72,
+      "entrada_api": {
+        "call_failure": 26.0,
+        "complains": 1.0,
+        "subscription_length": 35.0,
+        "charge_amount": 1.0,
+        "seconds_of_use": 1015.0,
+        "frequency_of_use": 50.0,
+        "frequency_of_sms": 21.0,
+        "distinct_called_numbers": 19.0,
+        "age_group": 3.0,
+        "tariff_plan": 1.0,
+        "status": 1.0,
+        "age": 30.0,
+        "customer_value": 126.6
+      },
+      "classe_real": 1,
+      "probabilidade_churn": 0.9,
+      "faixa": "alto",
+      "fatores": [
+        {
+          "campo": "complains",
+          "impacto": "aumenta",
+          "peso": 1.0,
+          "valor_shap": 0.4240405516010614
+        },
+        {
+          "campo": "status",
+          "impacto": "reduz",
+          "peso": 0.2904,
+          "valor_shap": -0.1231249189405777
+        },
+        {
+          "campo": "call_failure",
+          "impacto": "aumenta",
+          "peso": 0.1325,
+          "valor_shap": 0.0561824021410446
+        }
+      ]
+    },
+    {
+      "row_id": 473,
+      "entrada_api": {
+        "call_failure": 25.0,
+        "complains": 0.0,
+        "subscription_length": 36.0,
+        "charge_amount": 10.0,
+        "seconds_of_use": 11035.0,
+        "frequency_of_use": 103.0,
+        "frequency_of_sms": 22.0,
+        "distinct_called_numbers": 57.0,
+        "age_group": 5.0,
+        "tariff_plan": 2.0,
+        "status": 1.0,
+        "age": 55.0,
+        "customer_value": 200.07
+      },
+      "classe_real": 0,
+      "probabilidade_churn": 0.0,
+      "faixa": "baixo",
+      "fatores": [
+        {
+          "campo": "status",
+          "impacto": "reduz",
+          "peso": 1.0,
+          "valor_shap": -0.1525082172376014
+        },
+        {
+          "campo": "frequency_of_use",
+          "impacto": "reduz",
+          "peso": 0.7874,
+          "valor_shap": -0.12008094740374348
+        },
+        {
+          "campo": "seconds_of_use",
+          "impacto": "reduz",
+          "peso": 0.4846,
+          "valor_shap": -0.07391219272142857
+        }
+      ]
+    }
+  ]
+}

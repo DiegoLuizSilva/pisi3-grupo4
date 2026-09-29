@@ -1,10 +1,17 @@
 {
   "modelo": "Random Forest | SMOTENC",
+  "modelo_sha256": "13d946fbcaa29a9027b33702a1ec41f244c22ec5c12b2004f8c81481382e4d7d",
+  "classe_churn": 1,
   "unidade": "Score de probabilidade não calibrada",
   "n_background": 50,
   "n_explicados": 80,
-  "max_erro_aditividade": 7.771561172376096e-16,
+  "max_erro_aditividade": 8.881784197001252e-16,
   "row_id_local": 2127,
-  "base_local": 0.15366595238095238,
-  "score_local": 1.0
+  "base_local": 0.1535492857142857,
+  "score_local": 1.0,
+  "exemplos_locais": {
+    "baixo": 591,
+    "medio": 2681,
+    "alto": 2631
+  }
 }
