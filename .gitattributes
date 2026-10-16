@@ -1,0 +1,2 @@
+# O validar_inferencia confere o SHA-256 do CSV original; o Git não pode trocar LF por CRLF nele.
+data/raw/*.csv -text
