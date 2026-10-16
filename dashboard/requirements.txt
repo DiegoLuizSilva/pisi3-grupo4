@@ -1,0 +1,13 @@
+# Dependências do painel publicado no Streamlit Community Cloud.
+# O Cloud usa este arquivo (ao lado de app.py) no lugar do requirements.txt da raiz.
+# Versões iguais às do treino, para o simulador carregar o mesmo modelo.
+streamlit==1.60.0
+plotly==7.1.0
+streamlit==1.60.0
+pandas==2.3.3
+numpy==2.3.5
+scipy==1.17.0
+scikit-learn==1.8.0
+imbalanced-learn==0.14.2
+shap==0.52.0
+joblib==1.5.3
