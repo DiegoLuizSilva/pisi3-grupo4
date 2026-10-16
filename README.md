@@ -130,3 +130,39 @@ jupyter
 ## 🔗 Relacionado
 
 O aplicativo mobile (React Native/Expo) e a API que consomem o modelo produzido aqui estão no repositório principal do ChurnGuard, na disciplina de Engenharia de Software.
+---
+
+## 📊 Painel de análise (Streamlit)
+
+O painel reapresenta, em páginas separadas, as análises do artigo: base de dados, visão geral da carteira (BI), análise exploratória, perfis do K-Means, desempenho do modelo e explicabilidade SHAP. Ele só lê os resultados já gerados em `data/raw/`, `reports/tabelas/` e `models/`; não treina nem reajusta modelos.
+
+### Como rodar (Python 3.12)
+
+```bash
+python -m venv venv
+venv\Scripts\activate            # Linux/macOS: source venv/bin/activate
+pip install -r dashboard/requirements.txt
+streamlit run dashboard/app.py
+```
+
+Rode a partir da raiz do repositório. O painel abre em http://localhost:8501.
+
+### Estrutura
+
+| Arquivo | Conteúdo | Responsável |
+|---|---|---|
+| `dashboard/app.py` | Menu e navegação entre as páginas | Lucas Guerra |
+| `dashboard/dados.py` | Leitura da base, das tabelas e do modelo, com cache | Lucas Guerra |
+| `dashboard/paginas/inicio.py` | Problema, perguntas de pesquisa e guia do painel | Lucas Guerra |
+| `dashboard/paginas/base_de_dados.py` | Dicionário das colunas e qualidade dos dados | Pedro Poroca |
+| `dashboard/paginas/visao_geral.py` | Painel de BI da carteira | Pedro Poroca |
+| `dashboard/paginas/exploratoria.py` | EDA interativa | Artur Rio |
+| `dashboard/paginas/perfis.py` | Perfis do K-Means | Arthur Schmitz |
+| `dashboard/paginas/modelo.py` | Desempenho dos classificadores | Diego Luiz |
+| `dashboard/paginas/explicabilidade.py` | SHAP e simulador de cliente | Diego Luiz |
+
+### Regras para as páginas
+
+- Os dados vêm só de `dashboard/dados.py`: `carteira()`, `tabela(nome)` e `metadados(nome)`.
+- Cada página é um arquivo em `dashboard/paginas/` com o nome da tabela acima; enquanto ele não existe, o menu mostra "em construção".
+- Nenhum número entra no painel sem vir de um arquivo do repositório.
