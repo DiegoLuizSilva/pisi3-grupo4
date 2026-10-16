@@ -1,0 +1,1 @@
+"""Painel de análise do ChurnGuard. Entrada: dashboard/app.py."""
