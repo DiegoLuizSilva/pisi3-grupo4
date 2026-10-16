@@ -28,7 +28,7 @@ Texto de apoio para atualizar as seções 7.1 e 7.2 do artigo. Valores derivados
 
 ## Desenho experimental
 
-Foram preservados os 3.150 registros e os grupos de perfis idênticos. A partição reproduz o notebook 02: {metadata['n_treino']} registros de treino e {metadata['n_teste']} de teste, sem perfis compartilhados. A seleção supervisionada utilizou cinco folds estratificados por grupo somente no treino. Foram avaliadas 78 configurações (390 ajustes em CV), cobrindo quatro classificadores, três estratégias de balanceamento e alternativas de escala. O critério de seleção foi o F1 da classe churn. A reamostragem ocorreu dentro dos pipelines, somente na parcela de treinamento de cada fold.
+Foram preservados os 3.150 registros e os grupos de perfis idênticos. A partição reproduz o notebook 02: {metadata['n_treino']} registros de treino e {metadata['n_teste']} de teste, sem perfis compartilhados. A seleção supervisionada utilizou cinco folds estratificados por grupo somente no treino. Foram avaliadas 60 configurações (300 ajustes em CV), cobrindo três classificadores (Random Forest, SVM e KNN), três estratégias de balanceamento e alternativas de escala. O critério de seleção foi o F1 da classe churn. A reamostragem ocorreu dentro dos pipelines, somente na parcela de treinamento de cada fold.
 
 ## PP1 — Perfis de clientes
 
@@ -74,7 +74,6 @@ Figuras: `shap_importancia`, `shap_beeswarm`, `shap_local`. Dashboard: `03_expli
 
 ## Ajustes necessários no artigo
 
-- Incluir Regressão Logística entre os métodos efetivamente comparados.
 - Nomear o balanceamento sintético como SMOTENC, variante do SMOTE para dados mistos.
 - Substituir as tabelas fictícias de três classes por resultados binários reais (0 = não churn, 1 = churn).
 - Distinguir treino aparente, CV usada para seleção e teste final. Não usar o teste para trocar o vencedor.

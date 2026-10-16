@@ -62,7 +62,16 @@ def build_dashboards():
     test=pred[(pred.experimento==winner)&(pred.conjunto=='teste')]
     matrix=confusion_matrix(test.real,test.previsto,labels=[0,1])
     fig=make_subplots(rows=3,cols=2,subplot_titles=['F1 de churn · validação agrupada','F1 de churn · treino e teste','Matriz de confusão · vencedor no teste','Curva ROC · vencedor no teste','Precisão-recall · vencedor no teste','Recall e precisão · teste'],vertical_spacing=.16,horizontal_spacing=.2)
-    short={r.experimento:r.modelo.replace('Regressão Logística','Logística').replace('Random Forest','RF')+' / '+r.balanceamento.replace('Sem balanceamento','Sem').replace('Undersampling','Under') for r in ranking.itertuples()}
+    short = {
+    r.experimento: (
+        r.modelo.replace("Random Forest", "RF")
+        + " / "
+        + r.balanceamento
+            .replace("Sem balanceamento", "Sem")
+            .replace("Undersampling", "Under")
+    )
+    for r in ranking.itertuples()
+}
     fig.add_trace(go.Bar(x=ranking.cv_f1,y=[short[k] for k in ranking.experimento],orientation='h',error_x={'type':'data','array':ranking.cv_f1_std},name='CV',marker_color='#226B91',showlegend=False),1,1)
     for i,split in enumerate(['treino','teste']):
         part=metrics[(metrics.conjunto==split)&(metrics.experimento.isin(short))].set_index('experimento').loc[list(short)]
