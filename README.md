@@ -591,23 +591,7 @@ python -c 'from src.report import build_report; build_report()'
 
 Esses comandos utilizam os resultados já salvos, sem refazer a busca de hiperparâmetros.
 
-## 13. Execução no NixOS
-
-Em sistemas NixOS, bibliotecas Python com componentes nativos podem exigir dependências adicionais do sistema.
-
-É recomendável utilizar um ambiente Nix contendo Python, GCC e zlib, por exemplo:
-
-```bash
-nix-shell -p python312 gcc zlib
-```
-
-Dentro desse ambiente, crie ou ative o ambiente virtual Python 3.12 e instale os requisitos conforme as instruções anteriores.
-
-Dependendo da instalação e dos pacotes utilizados, bibliotecas nativas como `libstdc++.so.6` e `libz.so.1` poderão exigir configuração adicional dos caminhos de carregamento.
-
-Para um ambiente reproduzível no NixOS, recomenda-se futuramente manter um `shell.nix` ou `flake.nix` com as dependências nativas e a versão do Python adotada pelo projeto.
-
-## 14. Scripts auxiliares
+## 13. Scripts auxiliares
 
 Além dos notebooks, estão disponíveis os seguintes módulos:
 
@@ -642,7 +626,7 @@ O validador também oferece opções para comparar os artefatos com o repositór
 
 **Observação sobre `eda_visual.py`:** esse script ainda utiliza caminhos legados iniciados por `ml/`. Antes de executá-lo a partir da raiz deste repositório, esses caminhos precisam ser ajustados ou o script deve ser executado a partir de uma estrutura compatível. A pipeline principal de notebooks não depende dele.
 
-## 15. Integração com o aplicativo ChurnGuard
+## 14. Integração com o aplicativo ChurnGuard
 
 O modelo supervisionado produzido por este repositório é utilizado pelo projeto de Engenharia de Software, composto por:
 
@@ -658,7 +642,7 @@ O módulo `src/validar_inferencia.py` foi desenvolvido para conferir esses contr
 
 Este repositório não contém o código completo do aplicativo mobile ou da API.
 
-## 16. Reprodutibilidade e limitações
+## 15. Reprodutibilidade e limitações
 
 O projeto registra sementes, versões das bibliotecas, configurações, métricas e hashes dos artefatos experimentais para facilitar a reprodução e auditoria.
 
@@ -677,7 +661,7 @@ Entretanto, algumas limitações devem ser consideradas:
 
 O ChurnGuard fornece uma base experimental para identificação e análise de risco, mas os resultados não devem ser confundidos com garantias de desempenho ou de impacto financeiro em produção.
 
-## 17. Estado atual do desenvolvimento
+## 16. Estado atual do desenvolvimento
 
 ### Concluído
 
@@ -708,7 +692,7 @@ O ChurnGuard fornece uma base experimental para identificação e análise de ri
 - [ ] Consolidar um ambiente Nix reproduzível, se necessário.
 - [ ] Realizar estudos futuros de calibração, validação externa e avaliação operacional.
 
-## 18. Referências
+## 17. Referências
 
 **Dataset:** Iranian Churn Dataset — UCI Machine Learning Repository.
 
