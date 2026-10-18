@@ -3,7 +3,6 @@
 # Versões iguais às do treino, para o simulador carregar o mesmo modelo.
 streamlit==1.60.0
 plotly==7.1.0
-streamlit==1.60.0
 pandas==2.3.3
 numpy==2.3.5
 scipy==1.17.0
