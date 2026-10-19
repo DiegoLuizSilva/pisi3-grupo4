@@ -1,4 +1,4 @@
-"""Executa 03–06; --in-process dispensa sockets do kernel Jupyter."""
+"""Executa 03–05; --in-process dispensa sockets do kernel Jupyter."""
 from pathlib import Path
 import os, sys
 os.environ.setdefault('OMP_NUM_THREADS','2')
@@ -41,7 +41,7 @@ def in_process(nb):
 
 if __name__=='__main__':
     os.chdir(ROOT/'notebooks')
-    for path in sorted((ROOT/'notebooks').glob('0[3-6]_*.ipynb')):
+    for path in sorted((ROOT/'notebooks').glob('0[3-5]_*.ipynb')):
         print('Executando',path.name,flush=True)
         nb=nbformat.read(path,as_version=4)
         try:

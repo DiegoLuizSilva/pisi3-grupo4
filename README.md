@@ -49,13 +49,10 @@ pisi3-grupo4/
 │   ├── 03_clusterizacao.ipynb
 │   ├── 04_classificacao.ipynb
 │   ├── 05_explicabilidade_shap.ipynb
-│   ├── 06_dashboards.ipynb
 │   └── 07_perfis_complementar.ipynb
 │
 ├── src/
 │   ├── common.py
-│   ├── dashboards.py
-│   ├── report.py
 │   ├── revisao_k.py
 │   ├── sensibilidade_clusters.py
 │   ├── perfis_final.py
@@ -68,12 +65,8 @@ pisi3-grupo4/
 ├── reports/
 │   ├── tabelas/
 │   ├── figuras/
-│   ├── dashboards/
-│   │   ├── 01_segmentacao.html
-│   │   ├── 02_classificacao.html
-│   │   └── 03_explicabilidade.html
-│   └── resultados_artigo.md
-│
+
+
 ├── dashboard/
 │   ├── app.py
 │   ├── dados.py
@@ -245,7 +238,6 @@ Isso evita aplicar transformações ajustadas sobre o conjunto de teste.
 | `03_clusterizacao.ipynb` | Segmentação de clientes com K-Means |
 | `04_classificacao.ipynb` | Comparação e seleção dos modelos de churn |
 | `05_explicabilidade_shap.ipynb` | Interpretação global e local com SHAP |
-| `06_dashboards.ipynb` | Geração dos HTMLs e do relatório experimental |
 | `07_perfis_complementar.ipynb` | Análise complementar dos perfis de clientes |
 
 Os notebooks 03 a 06 podem ser executados automaticamente pelo arquivo `executar_projeto.py`.
@@ -456,16 +448,6 @@ Além do painel Streamlit, o projeto mantém três dashboards Plotly exportados 
 | `03_explicabilidade.html` | Análises e visualizações SHAP |
 
 Os arquivos ficam em:
-
-```text
-reports/dashboards/
-```
-
-Esses HTMLs podem ser abertos diretamente no navegador, inclusive para apresentação offline.
-
-O notebook `06_dashboards.ipynb` e o módulo `src/dashboards.py` são responsáveis pela geração desses arquivos.
-
-O relatório experimental textual é produzido por `src/report.py`, com saída em:
 
 ```text
 reports/resultados_artigo.md
