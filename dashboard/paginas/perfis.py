@@ -1,6 +1,6 @@
 """Página "Perfis": agrupamento K-Means dos clientes (Seção 7.1 do artigo).
 
-Todos os dados vêm de dashboard/dados.py. A página só lê os resultados do
+Dono: Diego Luiz. Todos os dados vêm de dashboard/dados.py. A página só lê os resultados do
 agrupamento já gerados pelo projeto; nada é reajustado aqui.
 Rodar pelo painel, a partir da raiz: streamlit run dashboard/app.py
 """
@@ -59,7 +59,8 @@ def main() -> None:
 
     st.info(
         f"O K-Means com k = {meta['k']} foi ajustado só com os clientes de treino e depois aplicado aos "
-        f"{br(len(clientes), 0)} clientes, usando os 12 atributos de entrada padronizados. O cancelamento "
+        f"{br(len(clientes), 0)} clientes, usando os 12 atributos de entrada (os nove numéricos padronizados e "
+        "os três binários mantidos em 0 e 1). O cancelamento "
         "não participou da formação dos grupos nem da escolha de k: as taxas abaixo são frequências "
         "observadas, consultadas depois, e descrevem associações, não causas."
     )
@@ -80,6 +81,7 @@ def main() -> None:
     fig.update_xaxes(title_text="k", dtick=1)
     fig.update_layout(height=340, margin=dict(l=10, r=10, t=40, b=10))
     st.plotly_chart(fig, width="stretch")
+    st.caption("Inércia e silhueta para k de 2 a 10 sobre o treino, com k = 3 destacado (Figura 7 do artigo).")
 
     revisao = tabela("revisao_k")
     criterios = revisao.loc[revisao.k.isin([2, 3, 4])].set_index("k")
@@ -134,7 +136,6 @@ def main() -> None:
         coluna.metric(linha.perfil, pct(linha.taxa), help="Taxa de cancelamento observada no perfil")
         coluna.caption(f"{br(linha.clientes, 0)} clientes · {br(linha.cancelaram, 0)} cancelamentos")
 
-
     fig = go.Figure(go.Bar(
         x=resumo.perfil, y=100 * resumo.taxa, marker_color=[cores[p] for p in resumo.perfil],
         error_y=dict(type="data", symmetric=False, array=100 * (resumo.ic_sup - resumo.taxa),
@@ -159,9 +160,10 @@ def main() -> None:
         }),
         hide_index=True, width="stretch",
     )
-    st.caption("Os perfis de alto engajamento têm só 5 e 4 cancelamentos na base completa, por isso o "
-               "intervalo de Wilson é largo em proporção à taxa. Com todos os clientes, a tabela reproduz "
-               "a Tabela 3 do artigo.")
+    engajados = resumo.loc[resumo.perfil != "Baixo engajamento"]
+    st.caption(f"Os perfis de alto engajamento têm só {' e '.join(map(str, engajados.cancelaram))} "
+               "cancelamentos nesta seleção, por isso o intervalo de Wilson é largo em proporção à taxa. "
+               "Com todos os clientes, o gráfico e a tabela reproduzem a Figura 10 e a Tabela 3 do artigo.")
 
     # Desvios por atributo
     st.header("O que distingue cada perfil")
@@ -207,12 +209,22 @@ def main() -> None:
     col_a, col_b = st.columns([1, 1])
     with col_a:
         caracteristicas = tabela("perfil_caracteristicas")
+        # O CSV arredonda as proporções em duas casas; elas são recalculadas da carteira para mostrar
+        # os mesmos valores do texto da Seção 7.1 (ex.: 21,0%, 15,9% e 0,7% em contrato).
+        proporcoes = {"Reclamação registrada": lambda d: (d.complains == 1).mean(),
+                      "Plano por contrato": lambda d: (d.tariff_plan == 2).mean(),
+                      "Linha inativa": lambda d: (d.status == 2).mean()}
+
+        def valor(atributo: str, media_csv: float, dados: pd.DataFrame) -> str:
+            return pct(proporcoes[atributo](dados), 1) if atributo in proporcoes else br(media_csv, 2)
+
         st.dataframe(
-            caracteristicas[["atributo", perfil, "geral", "unidade"]].rename(columns={
-                "atributo": "Atributo", "unidade": "Unidade", perfil: "Média do perfil", "geral": "Média geral"}),
+            pd.DataFrame({
+                "Atributo": caracteristicas.atributo,
+                "Média do perfil": [valor(a, v, do_perfil) for a, v in zip(caracteristicas.atributo, caracteristicas[perfil])],
+                "Média geral": [valor(a, v, clientes) for a, v in zip(caracteristicas.atributo, caracteristicas.geral)],
+                "Unidade": caracteristicas.unidade}),
             hide_index=True, width="stretch",
-            column_config={"Média do perfil": st.column_config.NumberColumn(format="%.2f"),
-                           "Média geral": st.column_config.NumberColumn(format="%.2f")},
         )
     with col_b:
         st.markdown("**Faixa de risco dos clientes do perfil**")
@@ -222,7 +234,8 @@ def main() -> None:
                      labels={"faixa": "Faixa de risco do modelo", "clientes": "Clientes"}, text="clientes")
         fig.update_layout(showlegend=False, height=330, margin=dict(l=10, r=10, t=10, b=10))
         st.plotly_chart(fig, width="stretch")
-        st.caption("Faixas do modelo final (Seção 7.2), que não usou os perfis como entrada.")
+        st.caption("Faixas do modelo final (Seção 7.2), que não usou os perfis como entrada. Inclui clientes "
+                   "de treino, cujo escore é otimista.")
 
     st.subheader("Clientes do perfil")
     colunas_lista = ["row_id", "conjunto", "desfecho", "escore", "faixa", "situacao", "plano", "reclamacao",
